@@ -40,23 +40,23 @@ for kind, path in walkDir(cwd):
 
 for file in cwd_files:
   var
-    extention_location = file.find(re"(\.[a-zA-Z0-9]{1,}$)")
-    extention: string
-  if extention_location != -1:
-    extention = file.substr(extention_location, len(file) - 1)
+    extension_location = file.find(re"(\.[a-zA-Z0-9]{1,}$)")
+    extension: string
+  if extension_location != -1:
+    extension = file.substr(extension_location, len(file) - 1)
   else:
     continue
-  if not file_formats.hasKey(extention):
+  if not file_formats.hasKey(extension):
     continue
 
   var
     new_dir: string
-  if not file_formats[extention].contains("/"):
+  if not file_formats[extension].contains("/"):
     cwd.add("/")
     new_dir = cwd
-    new_dir.add(file_formats[extention])
+    new_dir.add(file_formats[extension])
   else:
-    new_dir = expandTilde(file_formats[extention])
+    new_dir = expandTilde(file_formats[extension])
 
   var
     filename_location = file.find(re"\w+(?:\.\w+)*$")
